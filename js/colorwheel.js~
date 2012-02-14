@@ -1,0 +1,5 @@
+$(function(){
+  var $hex = $('#hextent'), $rgb = $('#rgbtext');
+  $hex.html('lalala');
+  console.log('test');
+});

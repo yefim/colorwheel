@@ -1,0 +1,16 @@
+<html>
+	<head>
+		<script type="text/javascript" src="js/colorwheel.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	</head>
+	<body>
+		<div id='wrapper'>
+			<div id='hex'>
+				<input id='hextext' type='text'/>
+			</div>
+			<div id='rgb'>
+				<input id='rgbtext' type='text'/>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,14 +1,19 @@
 <html>
 	<head>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script type="text/javascript" src="js/colorwheel.js"></script>
+		<link type='text/css' href='css/colorwheel.css' rel='stylesheet' />
 	</head>
-
 	<body>
 		<div id='wrapper'>
 			<div id='hex'>
-				<input id='hextext' type='text'/>
+				<input id='hextext' class='colortext' type='text'/>
 			</div>
 			<div id='rgb'>
-				<input id='rgbtext' type='text'/>
+				<input id='rgbtext' class='colortext' type='text'/>
+			</div>
+			<div>
+				<input readonly='true' id='color' type='text'/>
 			</div>
 		</div>
 	</body>
