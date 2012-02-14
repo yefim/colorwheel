@@ -1,6 +1,6 @@
 {
   "name": "colorwheel",
-  "version": "1.0",
+  "version": "0.1",
   "description": "play with colors",
   "browser_action": {
     "default_icon": "images/icon.png",
