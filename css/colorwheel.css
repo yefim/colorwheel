@@ -1,6 +1,15 @@
 body {
-	font-family: Arial;
+  font-family: Arial;
 }
 #color {
-	background-color: #fff;
+  background-color: #fff;
+  width: 159px;
+  height: 26px;
+  text-align: center;
+  font-size: 8pt;
+  /* border: 1px solid #000; */
+}
+.singlecolortext {
+  width: 32%;
+  display:inline-block;
 }
