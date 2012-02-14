@@ -6,13 +6,13 @@ function Color(red,green,blue) {
 Color.prototype.toString = function() {
   return 'rgb('+r+","+g","+b +')';
 }
-Color.prototype.toRGB = function(num) {
+var toRGB = function(num) {
   return parseInt(num, 16);
 }
-Color.prototype.toHex = function(num) {
+var toHex = function(num) {
   return parseInt(num,10).toString(16);
 }
-Color.prototype.parseHex = function(hex) {
+var parseHex = function(hex) {
   if (hex.charAt(0) === '#') hex = hex.substr(1);
   var hex_regex = /^(?:[0-9a-fA-F]{3}){1,2}$/;
   if (hex.match(hex_regex)) {
@@ -28,7 +28,7 @@ Color.prototype.parseHex = function(hex) {
     return 'rgb(' + c.join(',') + ')';
   }
 }
-Color.prototype.parseRGB = function(rgb) {
+var parseRGB = function(rgb) {
   var rgb_regex = /^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/;
   var c = rgb.match(rgb_regex);
   if (c) {
