@@ -4,7 +4,7 @@ function Color(red,green,blue) {
   this.b = blue;
 }
 Color.prototype.toString = function() {
-  return 'rgb('+r+","+g","+b +')';
+  return 'rgb('+r+','+g+','+b+')';
 }
 var toRGB = function(num) {
   return parseInt(num, 16);
