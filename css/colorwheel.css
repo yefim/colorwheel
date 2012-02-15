@@ -9,7 +9,7 @@ body {
   font-size: 8pt;
   /* border: 1px solid #000; */
 }
-.singlecolortext {
+.single {
   width: 32%;
   display:inline-block;
 }
