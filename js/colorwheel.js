@@ -13,10 +13,16 @@ $(function(){
   });
 
   $boxes.keyup(function() {
-    $boxes.not(this).val($(this).val());
+    $this = $(this);
+    var val = $this.val();
+    var type = $this.attr('data-type');
+    if (isValidColor(val,type)) {
+      $boxes.not(this).val(val);
+    }
   }).focus(function() {
     var $this = $(this);
-    if ($this.val() === $this.attr('data-default')) {
+    var val = $this.val();
+    if (val === $this.attr('data-default') || !isValidColor(val, $this.attr('data-type'))) {
       $this.val('');
     }
   }).click(function() {
