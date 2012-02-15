@@ -1,7 +1,4 @@
-$(function(){
-  var default_hex = "#RRGGBB", default_rgb = "rgb(R,G,B)", 
-    default_red = "R", default_green = "G", default_blue = "B";
-	
+$(function(){	
   var check_single_digit = function(num) {
     return (num.toString().length === 1) ? "0" + num.toString() : num;
   }
@@ -10,17 +7,23 @@ $(function(){
     $color = $('#color');
   var $boxes = $('.colortext');
   
-  $hex.val(default_hex); $rgb.val(default_rgb); $red.val(default_red);
-  $green.val(default_green); $blue.val(default_blue); $color.html('color');
-  
+  $boxes.each(function() {
+    $this = $(this);
+    $this.val($this.attr('data-default'));
+  });
+
   $boxes.keyup(function() {
     $boxes.not(this).val($(this).val());
   }).focus(function() {
-    //$boxes.not(this).val('');
+    var $this = $(this);
+    if ($this.val() === $this.attr('data-default')) {
+      $this.val('');
+    }
   }).click(function() {
     $(this).select();
   }).blur(function() {
-    if ($(this).val() === '')
-      $(this).val('default val');
+    var $this = $(this);
+    if ($this.val() === '')
+      $this.val($this.attr('data-default'));
   });
 });
