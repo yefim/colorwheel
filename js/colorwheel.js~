@@ -2,7 +2,7 @@ $(function(){
   var error_color = '#FFF8F8';
   var $color = $('#color'), $input = $('#input'), $boxes = $('.colortext');
 
-  $input.css('background-color', error_color);
+  $input.css('background-color', error_color).select();
   
   $boxes.each(function() {
     $this = $(this);
@@ -41,6 +41,7 @@ $(function(){
   });
   $color.click(function() {
     $input.val($color.css('background-color'));
+    $input.trigger('keyup');
     $input.select();
   });
 });
