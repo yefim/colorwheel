@@ -7,17 +7,12 @@
   </head>
   <body>
     <div id='wrapper'>
-      <div id='hex'>
-	<input data-default='#RRGGBB' data-type='hex' id='hextext' class='colortext' type='text'/>
-      </div>
-      <div id='rgb'>
-	<input data-default='rgb(R,G,B)' data-type='rgb' id='rgbtext' class='colortext' type='text'/>
-      </div>
-      <div id='singlergb'>
-	<input data-default='R' id='red' data-type='single' class='colortext single' type='text'/>
-	<input data-default='G' id='green' data-type =' single' class='colortext single' type='text'/>
-	<input data-default='B' id='blue' data-type='single' class='colortext single' type='text'/>
-      </div>
+      <input id='input' type='text'/>
+      <div data-default='#RRGGBB' id='hex' class='colortext'></div>
+      <div data-default='rgb(R,G,B)' id='rgb' class='colortext'></div>
+      <div data-default='R' id='red' class='colortext single'></div>
+      <div data-default='G' id='green' class='colortext single'></div>
+      <div data-default='B' id='blue' class='colortext single'></div>
       <div id='color'></div>
     </div>
   </body>

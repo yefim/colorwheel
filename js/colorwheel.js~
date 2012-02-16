@@ -1,44 +1,46 @@
 $(function(){	
-  var check_single_digit = function(num) {
-    return (num.toString().length === 1) ? "0" + num.toString() : num;
-  }
-  var $hex = $('#hextext'), $rgb = $('#rgbtext'), $red = $('#red'),
-    $green = $('#green'), $blue = $('#blue'), $singlergb = $('#singlergb'),
-    $color = $('#color');
-  var $boxes = $('.colortext');
+  var error_color = '#FFF8F8';
+  var $color = $('#color'), $input = $('#input'), $boxes = $('.colortext');
+
+  $input.css('background-color', error_color);
   
   $boxes.each(function() {
     $this = $(this);
-    $this.val($this.attr('data-default'));
+    $this.text($this.attr('data-default'));
   });
-
-  $boxes.keyup(function() {
-
-    $this = $(this);
-    var c = getColor($this.val());
-    console.log(c);
-    console.log(fuckyou('2'));
-    /*
+  
+  $input.keyup(function() {
+    var color = parseColor($input.val());
     if (color) {
-      $boxes.not(this).each(function() {
+      $input.css('background-color', '#fff');
+      $boxes.each(function() {
         var $current = $(this);
-        var into = $current.attr('data-type');
-        $current.val(color.convert(into));
-      }
-    }
-    */
-
-  }).focus(function() {
-    var $this = $(this);
-    var val = $this.val();
-    if (val === $this.attr('data-default') || !isValidColor(val, $this.attr('data-type'))) {
-      $this.val('');
+        var into = $current.attr('id');
+        $current.text(color.convert(into));
+      });
+      $color.css('background-color', color.convert('rgb'));
+    } else {
+      $input.css('background-color', error_color);
     }
   }).click(function() {
-    $(this).select();
-  }).blur(function() {
-    var $this = $(this);
-    if ($this.val() === '')
-      $this.val($this.attr('data-default'));
+    $input.select();
+  });
+  
+  $boxes.click(function() {
+    $this = $(this);
+    if ($this.attr('class').indexOf('single') > -1) {
+      var rgb = [];
+      $('.single').each(function(i) {
+        rgb[i] = $(this).text();
+      });
+      $input.val(rgb.join(', '));
+    } else {
+      $input.val($this.text());
+    }
+    $input.select();
+  });
+  $color.click(function() {
+    $input.val($color.css('background-color'));
+    $input.select();
   });
 });

@@ -1,70 +1,42 @@
-var getColor = function(c) {
+var parseColor = function(c) {
   if (c.charAt(0) === '#') c = c.substr(1);
   // hex, rgb, single
-  var regex = [/^([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})$/, /^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/, /^([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])$/];
-  $.each(regex, function(i, value) {
-    var color = c.match(value);
-    console.log(color);
-    if (color != null) {
-      //alert('FUCK YOU');
-      //return color;
-      return c.match(value);
-    }
-  });
+  var hex_regex = /^([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})$/;
+  var rgb_regex = /^rgb\s*\(([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5]),\s*([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5]),\s*([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])\)$/i;
+  var single_regex = /^([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5]),\s*([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5]),\s*([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])$/;
+  var color = [];
+  color = c.match(hex_regex);
+  if (color != null) {
+    return new Color(toRGB(color[1]),toRGB(color[2]),toRGB(color[3]))
+  }
+  color = c.match(rgb_regex);
+  if (color != null) {
+    return new Color(color[1], color[2], color[3]);
+  }
+  color = c.match(single_regex);
+  if (color != null) {
+    return new Color(color[1],color[2],color[3]);
+  }
 }
-var fuckyou = function(argument) {
-  return "fuck you";
+function Color(r,g,b) {
+  this.red = r;
+  this.green = g;
+  this.blue = b;
 }
-var isValidColor = function(c, type) {
-  if (type === 'rgb') {
-    return (parseRGB(c) != null);
+Color.prototype.convert = function(into) {
+  // break statements are unnecessary because I'm always returning shit
+  switch(into) {
+    case 'rgb': return 'rgb('+this.red+', '+this.green+', '+this.blue + ')';
+    case 'hex': return '#'+toHex(this.red)+''+toHex(this.green)+''+ toHex(this.blue);
+    case 'red': return this.red;
+    case 'green': return this.green;
+    case 'blue': return this.blue;
   }
-  else if (type === 'hex') {
-    return (parseHex(c) != null);
-  }
-  else if (type === 'single') {
-    var num = parseInt(c);
-    return (num <= 255 && num >= 0);
-  }
-  return false;
 }
 var toRGB = function(num) {
   return parseInt(num, 16);
 }
 var toHex = function(num) {
-  return parseInt(num,10).toString(16);
-}
-var parseColor = function(c, type) {
-  if (type === 'rgb') {
-    return parseRGB(c);
-  }
-  else if (type === 'hex') {
-    return parseHex(c);
-  }
-  else if (type === 'single') {
-    return parseInt(c);
-  }
-}
-var parseHex = function(hex) {
-  if (hex.charAt(0) === '#') hex = hex.substr(1);
-  var hex_regex = /^(?:[0-9a-fA-F]{3}){1,2}$/;
-  if (hex.match(hex_regex)) {
-    var c = [];
-    if (hex.length === 6) {
-      c = hex.match(/.{1,2}/g);
-    } else if (hex.length === 3) {
-      c = [hex[0]+hex[0], hex[1]+hex[1], hex[2]+hex[2]];
-    }
-    $.each(c, function(i, value) {
-      c[i] = toRGB(value);
-    });
-    return c;
-  }
-}
-var parseRGB = function(rgb) {
-  var rgb_regex = /^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/;
-  var c = rgb.match(rgb_regex);
-  if (c) {
-    return [c[1],c[2],c[3]];
-  }
+  var hex = parseInt(num,10).toString(16).toUpperCase();
+  return (hex.length == 1) ? "0"+hex : hex;
 }
