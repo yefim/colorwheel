@@ -2,10 +2,7 @@ $(function(){
   var check_single_digit = function(num) {
     return (num.toString().length === 1) ? "0" + num.toString() : num;
   }
-  var $hex = $('#hex'), $rgb = $('#rgb'), $red = $('#red'),
-    $green = $('#green'), $blue = $('#blue'), $singlergb = $('#singlergb'),
-    $color = $('#color'), $input = $('#input');
-  var $boxes = $('.colortext');
+  var $color = $('#color'), $input = $('#input'), $boxes = $('.colortext');
   
   $boxes.each(function() {
     $this = $(this);
