@@ -16,21 +16,19 @@ $(function(){
 
     $this = $(this);
     var c = parseColor($this.val());
-
-    /*
-    if (color) {
+    console.log(c);
+    if (c) {
       $boxes.not(this).each(function() {
         var $current = $(this);
         var into = $current.attr('data-type');
-        $current.val(color.convert(into));
-      }
+        $current.val(c.convert(into));
+      });
     }
-    */
 
   }).focus(function() {
     var $this = $(this);
     var val = $this.val();
-    if (val === $this.attr('data-default') || !isValidColor(val, $this.attr('data-type'))) {
+    if (val === $this.attr('data-default')) {
       $this.val('');
     }
   }).click(function() {

@@ -1,27 +1,34 @@
 var parseColor = function(c) {
   if (c.charAt(0) === '#') c = c.substr(1);
   // hex, rgb, single
-  var regex = [/^([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})$/, /^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/, /^([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])$/];
-  $.each(regex, function(i, value) {
-    var color = c.match(value);
-    if (color != null) {
-      console.log(color);
-      return color;
-    }
-  });
+  var hex_regex = /^([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})$/;
+  var rgb_regex = /^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/;
+  var single_regex = /^([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])$/;
+  var color = [];
+  color = c.match(hex_regex);
+  if (color != null) {
+    return new Color(toRGB(color[1]),toRGB(color[2]),toRGB(color[3]))
+  }
+  color = c.match(rgb_regex);
+  if (color != null) {
+    return new Color(color[1], color[2], color[3]);
+  }
+  color = c.match(single_regex);
+  if (color != null) {
+    return new Color(color[1],color[1],color[1]);
+  }
 }
-var isValidColor = function(c, type) {
-  if (type === 'rgb') {
-    return (parseRGB(c) != null);
+function Color(r,g,b) {
+  this.red = r;
+  this.green = g;
+  this.blue = b;
+}
+Color.prototype.convert = function(into) {
+  if (into === 'rgb') {
+    return 'rgb('+this.red+','+this.green+','+this.blue + ')';
+  } else if (into === 'hex') {
+    return '#'+toHex(this.red)+''+toHex(this.green)+''+ toHex(this.blue);
   }
-  else if (type === 'hex') {
-    return (parseHex(c) != null);
-  }
-  else if (type === 'single') {
-    var num = parseInt(c);
-    return (num <= 255 && num >= 0);
-  }
-  return false;
 }
 var toRGB = function(num) {
   return parseInt(num, 16);
