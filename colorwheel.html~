@@ -2,6 +2,7 @@
   <head>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script type="text/javascript" src="js/color.js"></script>
+    <script type='text/javascript' src='js/hsv.js'></script>
     <script type="text/javascript" src="js/colorwheel.js"></script>
     <link type='text/css' href='css/colorwheel.css' rel='stylesheet' />
   </head>
@@ -9,7 +10,7 @@
     <div id='wrapper'>
       <input id='input' type='text'/>
       <div data-default='#RRGGBB' id='hex' class='colortext'></div>
-      <div data-default='rgb(R,G,B)' id='rgb' class='colortext'></div>
+      <div data-default='rgb(R, G, B)' id='rgb' class='colortext'></div>
       <div data-default='R' id='red' class='colortext single'></div>
       <div data-default='G' id='green' class='colortext single'></div>
       <div data-default='B' id='blue' class='colortext single'></div>

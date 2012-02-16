@@ -12,14 +12,19 @@ body {
   background-color: #fff;
   height: 50px;
   border: 1px solid  #aaa;
+  cursor: pointer;
   /* border: 1px solid #000; */
 }
 .colortext {
   cursor: pointer;
   margin-bottom: 10px;
   border: 1px solid  #aaa;
+  box-shadow: inset 1px 1px 0px #000000;
 }
 .single {
   width: 31%;
   display:inline-block;
+}
+.error{
+  background-color: 
 }

@@ -1,8 +1,7 @@
-$(function(){	
-  var error_color = '#FFF8F8';
+$(function(){
   var $color = $('#color'), $input = $('#input'), $boxes = $('.colortext');
 
-  $input.css('background-color', error_color).select();
+  $input.addClass('error').select();
   
   $boxes.each(function() {
     $this = $(this);
@@ -12,7 +11,11 @@ $(function(){
   $input.keyup(function() {
     var color = parseColor($input.val());
     if (color) {
-      $input.css('background-color', '#fff');
+      var HSV = color.toHSV();
+      console.log(HSV);
+      var RGB = HSV.toRGB();
+      console.log(RGB);
+      $input.removeClass('error');
       $boxes.each(function() {
         var $current = $(this);
         var into = $current.attr('id');
@@ -20,7 +23,7 @@ $(function(){
       });
       $color.css('background-color', color.convert('rgb'));
     } else {
-      $input.css('background-color', error_color);
+      $input.addClass('error');
     }
   }).click(function() {
     $input.select();
