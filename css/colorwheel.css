@@ -1,15 +1,21 @@
 body {
   font-family: Arial;
+  width: 200px;
+  margin: 0px;
+  padding: 0px;
+}
+#input {
+  width: 100%;
 }
 #color {
   background-color: #fff;
-  width: 159px;
-  height: 26px;
-  text-align: center;
-  font-size: 8pt;
   /* border: 1px solid #000; */
 }
+.colortext {
+  margin-bottom: 10px;
+  border: 1px solid  #aaa;
+}
 .single {
-  width: 32%;
+  width: 30%;
   display:inline-block;
 }

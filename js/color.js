@@ -24,16 +24,13 @@ function Color(r,g,b) {
   this.blue = b;
 }
 Color.prototype.convert = function(into) {
-  if (into === 'rgb') {
-    return 'rgb('+this.red+','+this.green+','+this.blue + ')';
-  } else if (into === 'hex') {
-    return '#'+toHex(this.red)+''+toHex(this.green)+''+ toHex(this.blue);
-  } else if (into === 'red') {
-    return this.red;
-  } else if (into === 'green') {
-    return this.green;
-  } else if (into === 'blue') {
-    return this.blue;
+  // break statements are unnecessary because I'm always returning shit
+  switch(into) {
+    case 'rgb': return 'rgb('+this.red+','+this.green+','+this.blue + ')';
+    case 'hex': return '#'+toHex(this.red)+''+toHex(this.green)+''+ toHex(this.blue);
+    case 'red': return this.red;
+    case 'green': return this.green;
+    case 'blue': return this.blue;
   }
 }
 var toRGB = function(num) {
