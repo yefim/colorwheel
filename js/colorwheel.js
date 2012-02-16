@@ -13,12 +13,20 @@ $(function(){
   });
 
   $boxes.keyup(function() {
+
     $this = $(this);
-    var val = $this.val();
-    var type = $this.attr('data-type');
-    if (isValidColor(val,type)) {
-      $boxes.not(this).val(val);
+    var c = getColor($this.val());
+    console.log(c);
+    /*
+    if (color) {
+      $boxes.not(this).each(function() {
+        var $current = $(this);
+        var into = $current.attr('data-type');
+        $current.val(color.convert(into));
+      }
     }
+    */
+
   }).focus(function() {
     var $this = $(this);
     var val = $this.val();
