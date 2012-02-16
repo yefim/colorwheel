@@ -28,6 +28,12 @@ Color.prototype.convert = function(into) {
     return 'rgb('+this.red+','+this.green+','+this.blue + ')';
   } else if (into === 'hex') {
     return '#'+toHex(this.red)+''+toHex(this.green)+''+ toHex(this.blue);
+  } else if (into === 'red') {
+    return this.red;
+  } else if (into === 'green') {
+    return this.green;
+  } else if (into === 'blue') {
+    return this.blue;
   }
 }
 var toRGB = function(num) {
