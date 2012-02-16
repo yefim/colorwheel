@@ -1,4 +1,4 @@
-var getColor = function(c) {
+var parseColor = function(c) {
   if (c.charAt(0) === '#') c = c.substr(1);
   // hex, rgb, single
   var regex = [/^([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})$/, /^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/, /^([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])$/];
@@ -9,9 +9,6 @@ var getColor = function(c) {
       return color;
     }
   });
-}
-var fuckyou = function(argument) {
-  return "fuck you";
 }
 var isValidColor = function(c, type) {
   if (type === 'rgb') {
@@ -31,17 +28,6 @@ var toRGB = function(num) {
 }
 var toHex = function(num) {
   return parseInt(num,10).toString(16);
-}
-var parseColor = function(c, type) {
-  if (type === 'rgb') {
-    return parseRGB(c);
-  }
-  else if (type === 'hex') {
-    return parseHex(c);
-  }
-  else if (type === 'single') {
-    return parseInt(c);
-  }
 }
 var parseHex = function(hex) {
   if (hex.charAt(0) === '#') hex = hex.substr(1);

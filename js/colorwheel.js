@@ -15,8 +15,8 @@ $(function(){
   $boxes.keyup(function() {
 
     $this = $(this);
-    var c = getColor($this.val());
-    console.log(c);
+    var c = parseColor($this.val());
+
     /*
     if (color) {
       $boxes.not(this).each(function() {
