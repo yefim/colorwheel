@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/color.js"></script>
+    <script type="text/javascript" src="js/colorwheel.js"></script>
+    <link type='text/css' href='css/colorwheel.css' rel='stylesheet' />
+  </head>
+  <body>
+    <div id='wrapper'>
+      <div id='hex'>
+	<input data-default='#RRGGBB' data-type='hex' id='hextext' class='colortext' type='text'/>
+      </div>
+      <div id='rgb'>
+	<input data-default='rgb(R,G,B)' data-type='rgb' id='rgbtext' class='colortext' type='text'/>
+      </div>
+      <div id='singlergb'>
+	<input data-default='R' id='red' data-type='single' class='colortext single' type='text'/>
+	<input data-default='G' id='green' data-type =' single' class='colortext single' type='text'/>
+	<input data-default='B' id='blue' data-type='single' class='colortext single' type='text'/>
+      </div>
+      <div id='color'></div>
+    </div>
+  </body>
+</html>
