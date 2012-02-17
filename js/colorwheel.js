@@ -1,6 +1,5 @@
 $(function(){
-  var $color = $('#color'), $input = $('#input'), $boxes = $('.colortext'),
-    $HSV = $('.hsv');
+  var $color = $('#color'), $input = $('#input'), $boxes = $('.colortext');
 
   $input.select();
   
@@ -15,10 +14,6 @@ $(function(){
     }
     var color = parseColor($input.val());
     if (color) {
-      var HSV = color.toHSV();
-      $HSV.each(function() {
-	$(this).val(HSV.get($(this).attr('id')));
-      });
       $input.removeClass('error');
       $boxes.each(function() {
         var $current = $(this);
@@ -33,19 +28,6 @@ $(function(){
     $input.select();
   });
   
-  $HSV.keydown(function() {
-    
-    var values = [];
-    $HSV.each(function(i) {
-      values[i] = $(this).val();
-    });
-    var hsv = new HSV(parseInt(values[0]), parseInt(values[1]),parseInt(values[2]));
-    if (HSV) {
-      console.log(hsv);
-      $input.val(hsv.toRGB().convert('rgb'));
-    }
-  });
-
   $boxes.click(function() {
     var $this = $(this);
     var text = "";
