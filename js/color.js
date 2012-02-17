@@ -77,6 +77,14 @@ function HSV(h,s,v) {
   this.saturation = s;
   this.value = v;
 }
+HSV.prototype.get = function(type) {
+  switch(type) {
+    case 'hue': return this.hue.toFixed(0);
+    case 'saturation': return this.saturation.toFixed(2);
+    case 'value': return this.value.toFixed(2);
+    default: return;
+  }
+}
 HSV.prototype.toRGB = function() {
   var i = 0;
   var f, p, q, t;
