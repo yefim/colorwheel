@@ -1,7 +1,8 @@
 $(function(){
-  var $color = $('#color'), $input = $('#input'), $boxes = $('.colortext');
+  var $color = $('#color'), $input = $('#input'), $boxes = $('.colortext'),
+    $HSV = $('.HSV');
 
-  $input.addClass('error').select();
+  $input.select();
   
   $boxes.each(function() {
     $this = $(this);
@@ -12,9 +13,7 @@ $(function(){
     var color = parseColor($input.val());
     if (color) {
       var HSV = color.toHSV();
-      console.log(HSV);
-      var RGB = HSV.toRGB();
-      console.log(RGB);
+      $HSV.val(HSV.hue + "." + HSV.saturation + "." + HSV.value);
       $input.removeClass('error');
       $boxes.each(function() {
         var $current = $(this);

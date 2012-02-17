@@ -50,7 +50,7 @@ Color.prototype.toHSV = function() {
 
   var H, S, V;
   var min = Math.min(r,g,b ), max = Math.max(r,g,b);
-  var delta = max - min;
+  var delta = max - min; //need to cover the case if delta === 0
   V = max;    // v
   if(max != 0) 
     S = delta / max;  // s 
@@ -58,14 +58,17 @@ Color.prototype.toHSV = function() {
     // r = g = b = 0  // s = 0, v is undefined 
     S = 0; 
     H = -1;
-    return;
+    return new HSV(0,0,0);
   }
-  if(r == max) 
-    H = ( g - b ) / delta;  // between yellow & magenta
-  else if(g == max) 
-    H = 2 + ( b - r ) / delta; // between cyan & yellow 
+  if (delta === 0) {
+    H = 0;
+  }
+  else if(r === max)
+    H = (g-b)/delta;  // between yellow & magenta
+  else if(g === max) 
+    H = 2+(b-r)/delta; // between cyan & yellow 
   else 
-    H = 4 + ( r - g ) / delta; // between magenta & cyan
+    H = 4+(r-g)/delta; // between magenta & cyan
   H *= 60;    // degrees 
   if(H < 0) 
     H += 360;
@@ -82,27 +85,22 @@ HSV.prototype.toRGB = function() {
   var h = this.hue, s = this.saturation, v = this.value;
   if(s == 0) {
     // achromatic (grey)
-    return new Color(this.value, this.value, this.value);
+    return new Color(v*255, v*255, v*255);
   }
   h /= 60;			// sector 0 to 5
   i = Math.floor(h);
   f = h - i;			// factorial part of h
   p = v * (1 - s);
-  q = v * ( 1 - s * f );
-  t = v * ( 1 - s * ( 1 - f ) );
-  switch( i ) {
-    case 0:
-      return new Color(v*255, t*255, p*255);
-    case 1:
-      return new Color(q*255, v*255, p*255);
-    case 2:
-      return new Color(p*255, v*255, t*255);
-    case 3:
-      return new Color(p*255, q*255, v*255);
-    case 4:
-      return new Color(t*255, p*255, v*255);
-    default:		// case 5:
-      return new Color(v*255, p*255, q*255);
+  q = v * (1 - s * f);
+  t = v * (1 - s * (1 - f));
+  switch(i) {
+    case 0: return new Color(v*255, t*255, p*255);
+    case 1: return new Color(q*255, v*255, p*255);
+    case 2: return new Color(p*255, v*255, t*255);
+    case 3: return new Color(p*255, q*255, v*255);
+    case 4: return new Color(t*255, p*255, v*255);
+    case 5: return new Color(v*255, p*255, q*255);
+    default: return;
   }
 }
 
