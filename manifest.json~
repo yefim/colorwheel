@@ -1,6 +1,6 @@
 {
   "name": "colorwheel",
-  "version": "1.0.1",
+  "version": "1.0",
   "description": "colorwheel converts and previews color. It can parse Hex strings, RGB strings, and a comma delineated list of RGB values.",
   "icons": {
 		"16": "images/colorwheel16.png",
