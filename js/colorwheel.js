@@ -22,7 +22,6 @@ $(function(){
     }
     var color = parseColor(input);
     if (color) {
-      localStorage['last_valid_color'] = input;
       update_boxes(color);
     } else {
       $input.removeClass('valid').addClass('error');
