@@ -22,7 +22,7 @@ $(function(){
       $color.css('background-color', color.toString());
     } else {
       delete localStorage['color'];
-    	$input.removeClass('valid');
+      $input.removeClass('valid');
       $input.addClass('error');
     }
   }).click(function() { $input.select(); });
