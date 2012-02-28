@@ -3,22 +3,27 @@ $(function(){
   
   $boxes.each(function() { $(this).text($(this).attr('data-default')); });
 
+  var update_boxes = function(color) {
+    $input.removeClass('error').addClass('valid');
+    $boxes.each(function() {
+      var $current = $(this);
+      var into = $current.attr('id');
+      $current.text(color.convert(into));
+    });
+    $color.css('background-color', color.toString());
+  }
+
   $input.keyup(function() {
     var input = $input.val();
-      localStorage['input'] = input;
+    localStorage['input'] = input;
     if (input.length === 0) {
       $input.removeClass('error valid');
       return;
     }
     var color = parseColor(input);
     if (color) {
-      $input.removeClass('error').addClass('valid');
-      $boxes.each(function() {
-        var $current = $(this);
-        var into = $current.attr('id');
-        $current.text(color.convert(into));
-      });
-      $color.css('background-color', color.toString());
+      localStorage['last_valid_color'] = input;
+      update_boxes(color);
     } else {
       $input.removeClass('valid').addClass('error');
     }
