@@ -24,10 +24,13 @@ function Color(r,g,b) {
   this.blue = b;
   this.rgb = r+", "+g+", "+b;
 }
+Color.prototype.toString = function() {
+  return 'rgb('+this.rgb + ')';
+}
 Color.prototype.convert = function(into) {
   // break statements are unnecessary because I'm always returning shit
   switch(into) {
-    case 'rgb': return 'rgb('+this.rgb + ')';
+    case 'rgb': return this.toString();
     case 'hex': return '#'+toHex(this.red)+''+toHex(this.green)+''+ toHex(this.blue);
     case 'red': return this.red;
     case 'green': return this.green;
