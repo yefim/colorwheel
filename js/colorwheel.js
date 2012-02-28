@@ -5,14 +5,13 @@ $(function(){
 
   $input.keyup(function() {
     var input = $input.val();
+      localStorage['input'] = input;
     if (input.length === 0) {
       $input.removeClass('error valid');
-      localStorage['color'] = "";
       return;
     }
     var color = parseColor(input);
     if (color) {
-    	localStorage['color'] = input;
       $input.removeClass('error').addClass('valid');
       $boxes.each(function() {
         var $current = $(this);
@@ -21,9 +20,7 @@ $(function(){
       });
       $color.css('background-color', color.toString());
     } else {
-      delete localStorage['color'];
-      $input.removeClass('valid');
-      $input.addClass('error');
+      $input.removeClass('valid').addClass('error');
     }
   }).click(function() { $input.select(); });
   
@@ -45,7 +42,7 @@ $(function(){
     $input.val($color.css('background-color')).select().trigger('keyup');
   });
   
-  if (localStorage['color'] !== undefined) {
-    $input.val(localStorage['color']).select().trigger('keyup');
+  if (localStorage['input'] !== undefined) {
+    $input.val(localStorage['input']).select().trigger('keyup');
   }
 });
