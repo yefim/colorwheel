@@ -43,3 +43,7 @@ body {
 .valid {
 	background-color: #F0FFF2;
 }
+.inline {
+  display: inline;
+  width: 32%;
+}
