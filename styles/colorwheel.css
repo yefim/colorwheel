@@ -1,0 +1,12 @@
+input[type="text"] {
+  outline: none;
+}
+
+.color {
+  display: flex;
+}
+
+.copy {
+  width: 50px;
+  margin-left: auto;
+}
