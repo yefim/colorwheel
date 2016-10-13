@@ -11,5 +11,8 @@
     "default_icon": "images/colorwheel48.png",
     "default_title": "colorwheel",
     "default_popup": "colorwheel.html"
+  },
+  "background": {
+    "page": "empty.html"
   }
 }
