@@ -12,6 +12,7 @@ colorInput.addEventListener('input', function() {
     // show hex and rgb
     hexDisplay.innerHTML = parsed.hex;
     rgbDisplay.innerHTML = parsed.rgb;
+    preview.style.backgroundColor = parsed.rgb;
   } else {
     // show error
   }
