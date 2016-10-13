@@ -1,17 +1,15 @@
 {
   "manifest_version": 2,
   "name": "colorwheel",
-  "version": "1.0.2",
-  "description": "colorwheel converts and previews color. It can parse Hex strings, RGB strings, and a comma delineated list of RGB values.",
+  "version": "2.0.0",
+  "description": "colorwheel previews colors and easily converts between hex and rgb.",
   "icons": {
-		"16": "images/colorwheel16.png",
-		"48": "images/colorwheel48.png",
-		"128":"images/colorwheel128.png"
-	},
+    "19": "images/colorwheel16.png",
+    "38": "images/colorwheel48.png"
+  },
   "browser_action": {
-    "default_icon": "images/colorwheel16.png",
+    "default_icon": "images/colorwheel48.png",
     "default_title": "colorwheel",
     "default_popup": "colorwheel.html"
-  },
-  "content_security_policy": "script-src 'self' https://ajax.googleapis.com; object-src 'self'"
+  }
 }
