@@ -69,3 +69,11 @@ window.parseColor = function(str) {
     return null;
   }
 };
+
+window.copyString = function(node) {
+  var range = document.createRange();
+  range.selectNode(node);
+  window.getSelection().addRange(range);
+  document.execCommand('copy');
+  window.getSelection().removeAllRanges();
+};

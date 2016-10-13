@@ -1,4 +1,6 @@
 var parse = window.parseColor;
+var copy = window.copyString;
+
 var colorInput = document.getElementById('color-input');
 var hexDisplay = document.getElementById('hex');
 var rgbDisplay = document.getElementById('rgb');
@@ -19,11 +21,9 @@ colorInput.addEventListener('input', function() {
 }, true);
 
 document.getElementById('hex-copy').addEventListener('click', function() {
-  var hex = hexDisplay.innerHTML;
-  console.log(hex);
+  copy(hexDisplay);
 }, true);
 
 document.getElementById('rgb-copy').addEventListener('click', function() {
-  var rgb = rgbDisplay.innerHTML;
-  console.log(rgb);
+  copy(rgbDisplay);
 }, true);
