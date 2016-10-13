@@ -1,5 +1,8 @@
-A Chrome extension that allows the user to play around with hex and rgb values.
+colorwheel
+==========
 
-easily convert between the two
+Preview colors and easily convert between hex and rgb with a click.
 
-Download it at http://git.to/colorwheel
+## Contributors
+
+* [Yefim Vedernikoff](https://twitter.com/yefim)
