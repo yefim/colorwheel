@@ -1,5 +1,5 @@
 var parse = window.parseColor;
-var copy = window.copyString;
+var copy = window.copyNode;
 
 var colorInput = document.getElementById('color-input');
 var hexDisplay = document.getElementById('hex');

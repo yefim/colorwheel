@@ -70,7 +70,7 @@ window.parseColor = function(str) {
   }
 };
 
-window.copyString = function(node) {
+window.copyNode = function(node) {
   var range = document.createRange();
   range.selectNode(node);
   window.getSelection().addRange(range);

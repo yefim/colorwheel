@@ -1,9 +1,31 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 0;
+}
+
+.container {
+  padding: 10px;
+}
+
 input[type="text"] {
+  border: 1px solid #eee;
+  border-radius: 2px;
   outline: none;
+  padding: 4px;
 }
 
 .color {
   display: flex;
+  align-items: center;
 }
 
 .copy {
@@ -13,5 +35,6 @@ input[type="text"] {
 
 .preview {
   border: 1px solid #eee;
+  border-radius: 2px;
   height: 50px;
 }
