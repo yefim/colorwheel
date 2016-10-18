@@ -15,6 +15,8 @@ colorInput.addEventListener('input', function() {
     hexDisplay.innerHTML = parsed.hex;
     rgbDisplay.innerHTML = parsed.rgb;
     preview.style.backgroundColor = parsed.rgb;
+
+    chrome.storage.sync.set({color: parsed.hex});
   } else {
     // show error
   }
@@ -27,3 +29,15 @@ document.getElementById('hex-copy').addEventListener('click', function() {
 document.getElementById('rgb-copy').addEventListener('click', function() {
   copy(rgbDisplay);
 }, true);
+
+chrome.storage.sync.get('color', function(items) {
+  var val = items.color;
+  var parsed = parse(val);
+
+  if (val && parsed) {
+    colorInput.value = val;
+    hexDisplay.innerHTML = parsed.hex;
+    rgbDisplay.innerHTML = parsed.rgb;
+    preview.style.backgroundColor = parsed.rgb;
+  }
+});

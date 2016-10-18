@@ -7,7 +7,7 @@
 // * 255, 255, 255
 window.parseColor = function(str) {
   var match;
-  if (str.length === 0) {
+  if (!str) {
     // It's the default case
     return {
       hex: '#RRGGBB',
