@@ -10,6 +10,7 @@ html, body {
   margin: 0;
   padding: 0;
   height: 0;
+  width: 200px;
 }
 
 .container {
@@ -42,7 +43,7 @@ input[type="text"]:focus {
 .preview {
   border: 1px solid #eee;
   border-radius: 2px;
-  height: 50px;
+  height: 180px;
 }
 
 label, span, input {
