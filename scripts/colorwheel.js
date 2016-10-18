@@ -16,7 +16,7 @@ colorInput.addEventListener('input', function() {
     rgbDisplay.innerHTML = parsed.rgb;
     preview.style.backgroundColor = parsed.rgb;
 
-    chrome.storage.sync.set({color: parsed.hex});
+    chrome.storage.sync.set({color: val});
   } else {
     // show error
   }
